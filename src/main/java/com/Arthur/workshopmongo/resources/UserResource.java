@@ -42,9 +42,9 @@ public class UserResource {
 	}
 	@PostMapping
 	public ResponseEntity<Void> Insert(@RequestBody UserDTO obj) {
-		User user =service.fromDTO(obj);
-		user =service.insert(user);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+		User obj1 =service.fromDTO(obj);
+		obj1 =service.insert(obj1);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj1.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 
 	}
@@ -57,9 +57,9 @@ public class UserResource {
 	}
 	@PutMapping(value = "{id}")
 	public ResponseEntity<Void> Upadte(@RequestBody UserDTO obj,@PathVariable String id) {
-		User user =service.fromDTO(obj);
-		user.setId(id);
-		user =service.update(user);
+		User obj1 =service.fromDTO(obj);
+		obj1.setId(id);
+		obj1 =service.update(obj1);
 		return ResponseEntity.noContent().build();
 
 	}
